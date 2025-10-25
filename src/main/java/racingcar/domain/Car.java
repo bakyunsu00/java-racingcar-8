@@ -2,13 +2,14 @@ package racingcar.domain;
 
 public class Car {
     private String name;
+    private int moveCount;
 
     public Car(String name) {
         this.name = name;
     }
 
-    void move(){
-
+    public void move(){
+        this.moveCount++;
     }
 
 
@@ -16,6 +17,7 @@ public class Car {
     public String toString() {
         return "Car{" +
                 "name='" + name + '\'' +
+                ", moveCount=" + moveCount +
                 '}';
     }
 }
