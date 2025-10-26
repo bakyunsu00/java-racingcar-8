@@ -5,7 +5,7 @@ import java.util.List;
 
 public class FinishLine {
 
-    private  List<Car> winnerList = new ArrayList<>();
+    private  List<String> winnerList = new ArrayList<>();
     private int roundCount;
 
     public FinishLine(int roundCount) {
@@ -14,7 +14,7 @@ public class FinishLine {
 
     public void addWinner(Car car){
         if(car.getMoveCount() == roundCount){
-            winnerList.add(car);
+            winnerList.add(car.getName());
         }
     }
 
