@@ -3,27 +3,24 @@ package racingcar.service;
 import java.util.List;
 import racingcar.domain.Car;
 import racingcar.domain.RandomPicker;
+import racingcar.strategy.MoveStrategy;
+import racingcar.strategy.impl.RandomMoveStrategy;
 
 public class RacingGameService {
 
-    RandomPicker randomPicker = RandomPicker.getInstance();
+    MoveStrategy moveStrategy = new RandomMoveStrategy();
 
     private List<Car> carList;
     private int roundCount;
-
 
     public RacingGameService(List<Car> carList, int roundCount) {
         this.carList = carList;
         this.roundCount = roundCount;
     }
 
-
-
-    void playRound(){
+    public void playRound(){
         for(Car car: carList){
-            if(randomPicker.pickRandomNumber() >= 4){
-                car.move();
-            }
+            car.move(moveStrategy);
         }
     }
 
