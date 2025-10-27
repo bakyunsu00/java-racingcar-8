@@ -5,14 +5,11 @@ import racingcar.strategy.MoveStrategy;
 
 public class RandomMoveStrategy implements MoveStrategy {
 
-
-
-
     @Override
     public boolean canMove() {
-        if(Randoms.pickNumberInRange(0,9) >= 4){
+        if (Randoms.pickNumberInRange(0, 9) >= 4) {
             return true;
-        }else{
+        } else {
             return false;
         }
 

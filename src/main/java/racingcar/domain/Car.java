@@ -10,9 +10,8 @@ public class Car {
         this.name = name;
     }
 
-    public void move(MoveStrategy strategy){
-        if (strategy.canMove())
-        {
+    public void move(MoveStrategy strategy) {
+        if (strategy.canMove()) {
             this.moveCount++;
         }
     }
@@ -24,14 +23,6 @@ public class Car {
 
     public int getMoveCount() {
         return moveCount;
-    }
-
-    @Override
-    public String toString() {
-        return "Car{" +
-                "name='" + name + '\'' +
-                ", moveCount=" + moveCount +
-                '}';
     }
 
 

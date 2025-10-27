@@ -5,21 +5,25 @@ import java.util.List;
 
 public class FinishLine {
 
-    private  List<String> winnerList = new ArrayList<>();
-    private int roundCount;
+    private final int START_DISTANCE = 0;
+    private List<String> winnerList = new ArrayList<>();
+    private int maxDistance = START_DISTANCE;
 
-    public FinishLine(int roundCount) {
-        this.roundCount = roundCount;
-    }
-
-    public void addWinner(Car car){
-        if(car.getMoveCount() == roundCount){
+    public void addWinner(Car car) {
+        if (car.getMoveCount() == maxDistance) {
             winnerList.add(car.getName());
         }
     }
 
+    public List<String> getWinnerList() {
+        return winnerList;
+    }
 
+    public int getMaxDistance() {
+        return maxDistance;
+    }
 
-
-
+    public void changeMaxDistance(int maxDistance) {
+        this.maxDistance = maxDistance;
+    }
 }

@@ -9,31 +9,39 @@ public class ResultGameService {
 
 
     List<Car> carList = new ArrayList<>();
-    int roundCount;
-    FinishLine finishLine = new FinishLine(roundCount);
+    FinishLine finishLine = new FinishLine();
 
-    public ResultGameService(List<Car> carList, int roundCount) {
+    public ResultGameService(List<Car> carList) {
         this.carList = carList;
-        this.roundCount = roundCount;
     }
 
-    public void validate(){
-        for(Car car: carList){
-            finishLine.addWinner(car);
+    public void checkMaxDistance() {
+        for (Car car : carList) {
+            if (car.getMoveCount() > finishLine.getMaxDistance()) {
+                finishLine.changeMaxDistance(car.getMoveCount());
+            }
         }
-        //
+    }
+
+    public void checkWinner() {
+        for (Car car : carList) {
+            if (car.getMoveCount() == finishLine.getMaxDistance()) {
+                finishLine.addWinner(car);
+            }
+        }
     }
 
 
-     public void printResult(){
-        for(Car car: carList){
-        System.out.printf("%s : "+"-".repeat(car.getMoveCount())+"%n",car.getName());}
+    public void printResult() {
+        for (Car car : carList) {
+            System.out.printf("%s : " + "-".repeat(car.getMoveCount()) + "%n", car.getName());
+        }
         System.out.println(); //개행만 추가
-     }
+    }
 
-
-
-
+    public void printWinner() {
+        System.out.println("최종 우승자 : " + String.join(", ", finishLine.getWinnerList()));
+    }
 
 
 }
